@@ -27,5 +27,20 @@
 Once the container is running, open your browser and navigate to http://localhost:8761.
 You should see the Eureka Server dashboard.
 
+**Step 6: Verify the Container**
+To verify that the container is running properly:
+
+Check running containers:
+docker ps
+
+View container logs:
+docker logs eureka-server
+
+Stop the container:
+docker stop eureka-server
+
+Remove the container:
+docker rm eureka-server
+
 
 
