@@ -1,20 +1,24 @@
-server:
-  port: 8080  # API Gateway will run on port 8080
-
 spring:
   application:
     name: api-gateway
+
+  cloud:
+    gateway:
+      routes:
+        - id: user-service
+          uri: lb://user-service  # Service name registered in Eureka
+          predicates:
+            - Path=/users/**  # Ensure this path matches your API endpoint
 
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
-  instance:
-    prefer-ip-address: true
 
-# Actuator settings to expose health and other information
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
+server:
+  port: 8080  # API Gateway will run on port 8080
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+
