@@ -1,6 +1,6 @@
 **How to Run eureka-server**
  
- ** Step 1: Create a Dockerfile Using JDK 21**
+ **Step 1: Create a Dockerfile Using JDK 21**
     # Use an official JDK 21 runtime as the base image
     FROM openjdk:21-jdk-slim
     
