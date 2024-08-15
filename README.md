@@ -15,3 +15,16 @@
     
     # Command to run the Eureka Server
     ENTRYPOINT ["java", "-jar", "eureka-server.jar"]
+
+**Step 2: Build the Docker Image**
+   docker build -t eureka-server .
+
+**Step 3: Run the Docker Container**
+  docker run -d -p 8761:8761 --name eureka-server eureka-server
+
+**Step 4: Access the Eureka Server Dashboard**
+Once the container is running, open your browser and navigate to http://localhost:8761.
+You should see the Eureka Server dashboard.
+
+
+
