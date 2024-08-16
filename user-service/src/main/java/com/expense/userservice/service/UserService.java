@@ -3,6 +3,7 @@ package com.expense.userservice.service;
 import com.expense.userservice.entity.User;
 import com.expense.userservice.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,6 +15,8 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+    BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(12);
+
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
@@ -23,6 +26,7 @@ public class UserService {
     }
 
     public User createUser(User user) {
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
 
